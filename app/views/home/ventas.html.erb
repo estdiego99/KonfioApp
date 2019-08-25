@@ -84,37 +84,29 @@
                 </table>
             </div>
             <div class="col-xs-12 col-lg-5 p-0 ml-2 justify-content-center">
-            <%= area_chart @mejores_clientes, prefix:"$",stacked:true,colors: ["#8a79f7", "#00DCB8"],thousands:"," %> 
-
+            <%= area_chart @column_data, prefix:"$",stacked:true,colors: ["#8a79f7", "#00DCB8"],thousands:"," %> 
             </div>
         </div>
         <div class="row justify-content-center m-0 text-center">
-                <h5 class="m-2">MEJORES CLIENTES</h5>
+            <h2 class="mb-3 text-green">TUS CLIENTES</h2>
         </div>
         <div class="row m-0 justify-content-center">
-            <div class="col-xs-12 col-lg-5 p-0 ml-2 justify-content-center">
-                <table class="table table-striped mb-0">
-                    <thead>
-                    <tr>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">RFC</th>
-                        <th scope="col">Razón Social</th>
-                        <th scope="col">Importe</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                            <% @mejores_clientes[0..10].each do |factura| %>
-                                <tr>
-                                    <th scope="row"><%= factura.date.to_date %></th>
-                                    <td><%= factura.receptor_rfc %></td>
-                                    <td><%= factura.receptor_name %></td>
-                                    <td>$ <%= factura.subtotal %></td>
-                                </tr>
+            
+                
+                        <% @clientes[0..20].each do |cliente| %>
+                            <div class="col-xs-12 ">
+                            <div class="card m-3" style="width: 18rem;">
+                                <div class="card-body purple text-center p-3">
+                                        <i class="fa fa-people fa-3x pb-3" aria-hidden="true"></i>
+                                        <h3><%= cliente.rfc %></h3>
+                                        <p class="card-title"><%= cliente.name %></p>
+                                        <p><%= Bill.where(receptor_rfc: cliente.rfc).count %></p>
+                                </div>   
+                            </div>
+                            </div>
                         <% end %>
-                        
-                    </tbody>
-                </table>
-            </div>
+
+           
             
         </div>
     </div>
