@@ -1,6 +1,8 @@
 body{
     background-color: #E9EBED !important;
     cursor: pointer !important;
+    font-family: 'Montserrat', sans-serif;
+
 }
 a{
     text-decoration: none !important;
@@ -49,4 +51,11 @@ a{
     color: #04B49A;
 }
 
-
+.my-custom-scrollbar {
+position: relative;
+height: 200px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="konfioStyles.css">
     <link rel="stylesheet" href="font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -23,17 +24,17 @@
         <div class="row mr-0 mt-5 border-bottom justify-content-center">
                 <div class="col text-center">
                         <h3 class="text-center">VENTAS</h3>
-                        <h1 class="text-purple">$1,000,000</p>
+                        <h1 class="text-purple">$ <%= @ventas_total.round(2) %></p>
                 </div>
         </div>
         
-        <div class="row mr-0 justify-content-center">
+        <div class="row mr-0 justify-content-center ">
             
                 <div class="card m-3" height="30" style="width: 18rem;">
                     <div class="card-body purple text-center p-3" >
                             <i class="fa fa-users fa-3x pb-3" aria-hidden="true"></i>
                             <h3><%= current_business.clientes.count %></h3>
-                            <p class="card-title">Clientes en el periodo</p>
+                            <p class="card-title">Número de Clientes</p>
 
                     </div> 
 
@@ -41,7 +42,7 @@
                 <div class="card m-3" style="width: 18rem;">
                     <div class="card-body purple text-center p-3">
                             <i class="fa fa-file-o fa-3x pb-3" aria-hidden="true"></i>
-                            <h3>$800,000,000</h3>
+                            <h3>$ <%= @ventas.first.subtotal%></h3>
                             <p class="card-title">Mejor venta por factura</p>
 
                     </div>   
@@ -50,13 +51,13 @@
                 <div class="card m-3" style="width: 18rem;">
                     <div class="card-body purple text-center p-3">
                             <i class="fa fa-money fa-3x pb-3" aria-hidden="true"></i>
-                            <h3>$100,000,000</h3>
+                            <h3>$ <%= @iva_cobrado.round(2)%></h3>
                             <p class="card-title">IVA Cobrado</p>
                     </div>   
                 </div>
         </div>
         <div class="row justify-content-center m-0 text-center">
-            <h5 class="m-2">TOP 10 DE VENTAS</h5>
+            <h2 class="mb-3 text-green">TOP 10 DE VENTAS</h2>
         </div>
         <div class="row m-0 justify-content-center ">
             <div class="col-xs-12 col-lg-5 p-0 ml-2 table-responsive table-wrapper-scroll-y my-custom-scrollbar">
@@ -70,12 +71,12 @@
                               </tr>
                             </thead>
                             <tbody>
-                                <% current_business.ventas.sort_by(&:total).reverse[0..10].each do |factura| %>
+                                <% @ventas[0..10].each do |factura| %>
                                         <tr>
                                             <th scope="row"><%= factura.date.to_date %></th>
                                             <td><%= factura.receptor_rfc %></td>
                                             <td><%= factura.receptor_name %></td>
-                                            <td>$ <%= factura.cost %></td>
+                                            <td>$ <%= factura.subtotal %></td>
                                         </tr>
                                 <% end %>
                              
@@ -83,7 +84,7 @@
                 </table>
             </div>
             <div class="col-xs-12 col-lg-5 p-0 ml-2 justify-content-center">
-                <%= area_chart @column_data, prefix:"$",stacked:true,colors: ["#8a79f7", "#00DCB8"],thousands:"," %> 
+            <%= area_chart @mejores_clientes, prefix:"$",stacked:true,colors: ["#8a79f7", "#00DCB8"],thousands:"," %> 
 
             </div>
         </div>
@@ -102,11 +103,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <% current_business.clientes.group_by(&:rfc).each do |factura| %>
+                            <% @mejores_clientes[0..10].each do |factura| %>
                                 <tr>
-                                    <%= factura %>
+                                    <th scope="row"><%= factura.date.to_date %></th>
+                                    <td><%= factura.receptor_rfc %></td>
+                                    <td><%= factura.receptor_name %></td>
+                                    <td>$ <%= factura.subtotal %></td>
                                 </tr>
                         <% end %>
+                        
                     </tbody>
                 </table>
             </div>

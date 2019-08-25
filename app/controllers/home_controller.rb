@@ -19,16 +19,25 @@ class HomeController < ApplicationController
         end
         @compras_total.round(2)
         @column_data = Bill.group_by_week(:date).sum(:cost)
+        @column_data_ventas = Bill.group_by_year(:date).sum(:cost)
     end
 
     def ventas
-        @ventas = current_business.ventas.sort_by(&:total)
+        @ventas = current_business.ventas.sort_by(&:total).reverse
         @clientes = current_business.clientes
         @ventas_total = 0
+        @ventas_subtotal = 0
         @ventas.each do |factura|
             @ventas_total += factura.total
+            @ventas_subtotal += factura.subtotal
         end
         @ventas_total.round(2)
+
+        @iva_cobrado = @ventas_total - @ventas_subtotal
+      
+        @mejores_clientes = mejores_clientes(@ventas, @clientes)
+        
+
     end
 
     def compras
@@ -40,5 +49,9 @@ class HomeController < ApplicationController
         end
         @compras_total.round(2)
     end
-
+    def mejores_clientes(ventas,clientes)
+        @h = ventas.group(:receptor_rfc).sum('subtotal')
+        @h.sort_by {|k , v | v }.reverse
+        @h
+    end
 end
