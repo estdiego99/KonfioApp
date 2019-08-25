@@ -1,15 +1,41 @@
 class Business < ApplicationRecord
     
     def bills
-        Business.where(rfc: rfc)
+        Bill.where(rfc: rfc)
     end
 
     def ventas
-        bills.where(:venta => "true")
+        @ventas = []
+        bills.each do |factura|
+            if (factura.venta)
+                @ventas.push(factura)
+            end
+        end
     end
 
     def compras
-        bills.where(:venta => "false")
+        @compras = []
+        bills.each do |factura|
+            if (!factura.venta)
+                @compras.push(factura)
+            end
+        end
+    end
+
+    def ventas_subtotal
+        @acumulado = 0
+        ventas.each do |factura|
+            @acumulado += factura.subtotal
+        end
+        @acumulado.round(2)
+    end
+
+    def ventas_total
+        @acumulado = 0
+        ventas.each do |factura|
+            @acumulado += factura.total
+        end
+        @acumulado.round(2)
     end
 
     def products
