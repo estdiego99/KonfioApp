@@ -18,6 +18,7 @@ class HomeController < ApplicationController
             @compras_total += factura.total
         end
         @compras_total.round(2)
+        @column_data = Bill.group_by_week(:date).sum(:cost)
     end
 
     def ventas

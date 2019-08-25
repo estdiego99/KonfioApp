@@ -55,6 +55,13 @@ class Business < ApplicationRecord
         end
         @acumulado.round(2)
     end
+    def compras_total
+        @acumulado = 0
+        compras.each do |factura|
+            @acumulado += factura.total
+        end
+        @acumulado.round(2)
+    end
 
     def products
         Product.where(:bills.product_id => product_id, :bill.venta => "true")

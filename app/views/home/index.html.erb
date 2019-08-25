@@ -66,7 +66,7 @@
         
         <div class="row  mr-0 justify-content-center">
             <div class="col-md-6">
-                <%= area_chart  Bill.group_by_week(:date).sum(:cost), prefix:"$",colors: ["#8a79f7", "#00DCB8"] %> 
+                <%= area_chart @column_data, prefix:"$",stacked:true,colors: ["#8a79f7", "#00DCB8"],thousands:"," %> 
             </div>
         </div>
     </div>
