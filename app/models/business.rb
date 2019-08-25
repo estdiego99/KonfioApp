@@ -43,10 +43,12 @@ class Business < ApplicationRecord
     end
 
     def clientes
-
-    end
-
-    def mejores_clientes
-
+        @clientes = []
+        ventas.each do |factura|
+            if (!factura.receptor.in?@clientes)
+                @clientes.push(factura.receptor)
+            end
+        end
+        @clientes
     end
 end
