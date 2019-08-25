@@ -24,10 +24,6 @@ class Bill < ApplicationRecord
         Product.find(product_id)
     end
 
-    def subtotal
-        cost*quantity
-    end
-
     def total
         subtotal*1.16
     end

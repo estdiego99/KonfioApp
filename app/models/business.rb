@@ -69,4 +69,14 @@ class Business < ApplicationRecord
         end
         @clientes
     end
+
+    def proveedores
+        @proveedores = []
+        compras.each do |factura|
+            if (!factura.emisor.in?@proveedores)
+                @proveedores.push(factura.emisor)
+            end
+        end
+        @proveedores
+    end
 end

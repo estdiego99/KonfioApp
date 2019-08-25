@@ -19,10 +19,12 @@ ActiveRecord::Schema.define(version: 2019_08_25_000727) do
     t.string "rfc", null: false
     t.string "ccyisocode", null: false
     t.string "place_generated", null: false
+    t.integer "subtotal", null: false
     t.datetime "date", null: false
     t.boolean "vigente", null: false
     t.integer "quantity", null: false
     t.integer "cost", null: false
+    t.boolean "venta", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "product_id"

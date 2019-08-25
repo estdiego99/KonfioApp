@@ -14,13 +14,15 @@ Bill.delete_all
 Product.delete_all
 Business.delete_all
 
-facturas_vanilla.drop(1).each do |factura|
+facturas_vanilla[1..2000].each do |factura|
     rfc = factura[0]
     uuid = factura[1]
     ccyisocode = factura[2]
     ccyfx = factura[3]
     payment_method = factura[4]
     payment_type = factura[5]
+    subtotal = factura[6]
+    total = factura[7]
     placegenerated = factura[8]
     date = factura[9]
     receptor_rfc = factura[10]
@@ -58,6 +60,7 @@ facturas_vanilla.drop(1).each do |factura|
         @bill.rfc = rfc
         @bill.uuid = uuid
         @bill.ccyisocode = ccyisocode
+        @bill.subtotal = subtotal
         @bill.place_generated = placegenerated
         @bill.date = date
         @bill.vigente = (vigente == "Vigente")
@@ -66,6 +69,7 @@ facturas_vanilla.drop(1).each do |factura|
         @bill.emisor_rfc = emisor_rfc
         @bill.receptor_rfc = receptor_rfc
         @bill.cost = cost;
+        @bill.venta = (rfc == emisor_rfc)
         @bill.save!
     end
 end
