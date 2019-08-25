@@ -91,16 +91,14 @@
             <h2 class="mb-3 text-green">TUS CLIENTES</h2>
         </div>
         <div class="row m-0 justify-content-center">
-            
-                
-                        <% @clientes[0..20].each do |cliente| %>
+                        <% @clientes.sort[0..7].each do |cliente| %>
                             <div class="col-xs-12 ">
                             <div class="card m-3" style="width: 18rem;">
-                                <div class="card-body purple text-center p-3">
-                                        <i class="fa fa-people fa-3x pb-3" aria-hidden="true"></i>
+                                <div class="card-body  text-center p-3">
+                                        <i class="fa fa-user fa-3x pb-3" aria-hidden="true"></i>
                                         <h3><%= cliente.rfc %></h3>
-                                        <p class="card-title"><%= cliente.name %></p>
-                                        <p><%= Bill.where(receptor_rfc: cliente.rfc).count %></p>
+                                        <p class="card-title">Nombre: <%= cliente.name %></p>
+                                        <p>Facturas: <%= Bill.where(receptor_rfc: cliente.rfc).count %></p>
                                 </div>   
                             </div>
                             </div>
