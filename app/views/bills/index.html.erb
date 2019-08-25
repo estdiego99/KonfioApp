@@ -29,10 +29,20 @@
         <table class="table table-striped mb-0">
                 <thead>
                     <tr>
-                    <th scope="col">Fecha</th>
                     <th scope="col">RFC</th>
-                    <th scope="col">Razón Social</th>
-                    <th scope="col">Importe</th>
+                    <th scope="col">Uuid</th>
+                    <th scope="col">CCY ISO Code</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Nombre emisor</th>
+                    <th scope="col">RFC receptor</th>
+                    <th scope="col">Nombre receptor</th>
+                    <th scope="col">RFC receptor</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Product ID</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Costo</th>
                     </tr>
                 </thead>
                 <tbody id="tabla-all-bills">
@@ -43,7 +53,7 @@
                                 <th scope="row"><%= factura.ccyisocode %></th>
                                 <td>$ <%= factura.subtotal %></td>
                                 <td>$ <%= factura.place_generated %></td>
-                                <td>$ <%= factura.date %></td>
+                                <td><%= factura.date %></td>
                                 <td><%= factura.emisor_name %></td>
                                 <td><%= factura.emisor_rfc %></td>
                                 <td><%= factura.receptor_name %></td>
