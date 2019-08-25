@@ -24,11 +24,11 @@
         <div class="row mr-0 mt-5 border-bottom justify-content-center">
                 <div class="col text-center">
                         <h3 class="text-center">VENTAS</h3>
-                        <h1 class="text-purple">$ <%= @ventas_total.round(2) %></p>
+                        <h1 class="text-green">$ <%= @ventas_total.round(2) %></p>
                 </div>
         </div>
         
-        <div class="row mr-0 justify-content-center ">
+        <div class="row mr-0  border-bottom  justify-content-center ">
             
                 <div class="card m-3" height="30" style="width: 18rem;">
                     <div class="card-body purple text-center p-3" >
@@ -56,10 +56,16 @@
                     </div>   
                 </div>
         </div>
-        <div class="row justify-content-center m-0 text-center">
-            <h2 class="mb-3 text-green">TOP 10 DE VENTAS</h2>
+        <div class="row mt-3 justify-content-center m-0 text-center">
+            <div class="col">
+                <h2 class="mb-3 text-green">TOP 10 DE VENTAS</h2>
+            </div>
+            <div class="col">
+                <h2 class="mb-3 text-green">TUS VENTAS</h2>
+            </div>
+            
         </div>
-        <div class="row m-0 justify-content-center ">
+        <div class="row ml-0 mt-5 border-bottom  justify-content-center ">
             <div class="col-xs-12 col-lg-5 p-0 ml-2 table-responsive table-wrapper-scroll-y my-custom-scrollbar">
                 <table class="table table-striped mb-0">
                             <thead>
@@ -84,10 +90,10 @@
                 </table>
             </div>
             <div class="col-xs-12 col-lg-5 p-0 ml-2 justify-content-center">
-            <%= area_chart @column_data, prefix:"$",stacked:true,colors: ["#8a79f7", "#00DCB8"],thousands:"," %> 
+                <%= area_chart @column_data, prefix:"$",stacked:true,colors: ["#8a79f7", "#00DCB8"],thousands:"," %> 
             </div>
         </div>
-        <div class="row justify-content-center m-0 text-center">
+        <div class="row mt-3 justify-content-center m-0 text-center">
             <h2 class="mb-3 text-green">TUS CLIENTES</h2>
         </div>
         <div class="row m-0 justify-content-center">
@@ -95,7 +101,7 @@
                             <div class="col-xs-12 ">
                             <div class="card m-3" style="width: 18rem;">
                                 <div class="card-body  text-center p-3">
-                                        <i class="fa fa-user fa-3x pb-3" aria-hidden="true"></i>
+                                        <i class="fa fa-user fa-3x pb-3 text-purple" aria-hidden="true"></i>
                                         <h3><%= cliente.rfc %></h3>
                                         <p class="card-title">Nombre: <%= cliente.name %></p>
                                         <p>Facturas: <%= Bill.where(receptor_rfc: cliente.rfc).count %></p>
@@ -103,9 +109,6 @@
                             </div>
                             </div>
                         <% end %>
-
-           
-            
         </div>
     </div>
 </body>

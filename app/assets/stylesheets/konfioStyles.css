@@ -52,7 +52,7 @@ a{
     background-color: #5c5a92 !important;
 }
 .text-purple{
-    color: #8A79F7;
+    color: #5c5a92;
 }
 .text-green{
     color: #04B49A;
@@ -60,7 +60,7 @@ a{
 
 .my-custom-scrollbar {
 position: relative;
-height: 200px;
+height: 300px;
 overflow: auto;
 }
 .table-wrapper-scroll-y {

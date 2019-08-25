@@ -24,7 +24,8 @@
         <div class="row mr-0 mt-5 border-bottom justify-content-center">
             <div class="col-md-6 text-center">
                     <h3 class="text-center">GANANCIAS</h3>
-                    <h1 class="text-purple"><%= @bills[0].total  %></h1>
+                    <h1 class="text-purple">$ <%= @bills[0].total  %></h1>
+                    
             </div>
             <div class="col-md-6 border-left text-center">
                     KONFIO
@@ -49,14 +50,17 @@
             <a href="ventas.html">
                 <div class="card m-3" style="width: 18rem;">
                     <div class="card-body purple">
+                         <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
                         <h3 class="card-title text-center">VENTAS</h3>
                         <h4 class="card-text text-center">$ <%= @ventas_total.round(2) %></h4>
+                        
                     </div>   
                 </div>
             </a>
             <a href="compras.html">
                 <div class="card m-3" style="width: 18rem;">
                     <div class="card-body green ">
+                    <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
                         <h3 class="card-title text-center">GASTOS</h3>
                         <h4 class="card-text text-center">$ <%= @compras_total.round(2) %></h4>
                     </div>   

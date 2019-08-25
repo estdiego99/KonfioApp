@@ -35,26 +35,20 @@ class HomeController < ApplicationController
 
         @iva_cobrado = @ventas_total - @ventas_subtotal
         @column_data = Bill.where(venta: 'true').group_by_week(:date).sum(:subtotal)
-
-        @mejores_clientes = mejores_clientes(@ventas, @clientes)
-        logger.debug(@mejores_clientes)
-
     end
 
     def compras
         @compras = current_business.compras.sort_by(&:total)
         @proveedores = current_business.proveedores
         @compras_total = 0
+        @compras_subtotal = 0
         @compras.each do |factura|
             @compras_total += factura.total
+            @compras_subtotal += factura.subtotal
         end
         @compras_total.round(2)
-    end
 
-    def mejores_clientes(ventas,clientes)
-        @h = Bill.group(:receptor_rfc).sum(:subtotal)
-        logger.debug(@h)
-        @h.sort_by {|k , v | v }.reverse
-        @h
+        @iva_cobrado = (@compras_total - @compras_subtotal).round(2)
+        @column_data = Bill.where(venta: 'false').group_by_week(:date).sum(:subtotal)
     end
 end
