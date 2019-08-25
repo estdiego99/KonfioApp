@@ -4,10 +4,11 @@ class CreateBills < ActiveRecord::Migration[5.2]
       t.string :rfc, null: false
       t.string :uuid, null: false
       t.string :ccyisocode, null: false
-      t.integer :place_generated, null: false
+      t.string :place_generated, null: false
       t.datetime :date, null: false
       t.boolean :vigente, null: false
       t.integer :quantity, null: false
+      t.integer :cost, null: false
 
       t.timestamps
     end

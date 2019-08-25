@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 2019_08_25_000727) do
   create_table "bills", primary_key: "uuid", id: :string, force: :cascade do |t|
     t.string "rfc", null: false
     t.string "ccyisocode", null: false
-    t.integer "place_generated", null: false
+    t.string "place_generated", null: false
     t.datetime "date", null: false
     t.boolean "vigente", null: false
     t.integer "quantity", null: false
+    t.integer "cost", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "product_id"

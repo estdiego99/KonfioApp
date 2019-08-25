@@ -47,8 +47,4 @@ class Bill < ApplicationRecord
     def receptor_name
         receptor.name
     end
-
-    def cost
-        product.cost
-    end
 end

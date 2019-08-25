@@ -65,6 +65,7 @@ facturas_vanilla.drop(1).each do |factura|
         @bill.product_id = product_id
         @bill.emisor_rfc = emisor_rfc
         @bill.receptor_rfc = receptor_rfc
+        @bill.cost = cost;
         @bill.save!
     end
 end
