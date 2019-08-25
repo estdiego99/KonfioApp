@@ -11,6 +11,7 @@ class Business < ApplicationRecord
                 @ventas.push(factura)
             end
         end
+        @ventas
     end
 
     def compras
@@ -20,6 +21,23 @@ class Business < ApplicationRecord
                 @compras.push(factura)
             end
         end
+        @compras
+    end
+
+    def compras_subtotal
+        @acumulado = 0
+        compras.each do |factura|
+            @acumulado += factura.subtotal
+        end
+        @acumulado.round(2)
+    end
+
+    def compras_total
+        @acumulado = 0
+        compras.each do |factura|
+            @acumulado += factura.total
+        end
+        @acumulado.round(2)
     end
 
     def ventas_subtotal
