@@ -17,20 +17,20 @@
 <body>
     <div class="container-fluid pl-0 pr-0">
         <nav class="navbar purple navbar-light ml-0 justify-content-center">
-            <a class=" navbar navbar-brand purple" href="#">
-                <p><%= @bills[0].business_name %></p>
+            <a class=" navbar navbar-brand purple" href="/">
+                <p id="header-title"><%= @bills[0].business_name %></p>
             </a>
         </nav>
         <div class="row mr-0 mt-5 border-bottom justify-content-center">
+            
+            <div class="col-md-6 border-left text-center">
+                    <img class="responsive" src="https://d1ic4altzx8ueg.cloudfront.net/finder-us/wp-uploads/sites/92/2017/12/Konfio_FI.png">
+            </div>
             <div class="col-md-6 text-center">
                     <h3 class="text-center">GANANCIAS</h3>
                     <h1 class="text-purple">$ <%= @bills[0].total  %></h1>
                     
             </div>
-            <div class="col-md-6 border-left text-center">
-                    KONFIO
-            </div>
-
         </div>
         <div class="row mr-0 mt-3 justify-content-center justify-content-md-right">
                     <div class="dropdown text-center">
@@ -47,7 +47,7 @@
         </div>
     
         <div class="row mr-0 justify-content-center">
-            <a href="ventas.html">
+            <a href="home/ventas">
                 <div class="card m-3" style="width: 18rem;">
                     <div class="card-body purple">
                          <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>
@@ -57,7 +57,7 @@
                     </div>   
                 </div>
             </a>
-            <a href="compras.html">
+            <a href="home/compras">
                 <div class="card m-3" style="width: 18rem;">
                     <div class="card-body green ">
                     <i class="fa fa-cart-plus fa-2x" aria-hidden="true"></i>

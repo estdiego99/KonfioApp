@@ -17,19 +17,46 @@
 <body>
     <div class="container-fluid pl-0 pr-0">
         <nav class="navbar purple navbar-light ml-0">
-            <a class="navbar-brand" href="#">
-                <p><%= @bills[0].business_name %></p>
+            <a class="navbar-brand" href="/">
+                <i class="fa fa-home fa-2x purple" aria-hidden="true"></i>
             </a>
         </nav>
         <div class="row mr-0 mt-5 border-bottom justify-content-center">
             <div class="col-md-6 text-center">
-                    <h1 class="text-purple">MIS FACURAS:</h1>
-                    <table>
-                    <% @bills.each do |bill| %>
-                    <% end %>
-                    </table>
+                    <h1 class="text-purple">MIS FACTURAS:</h1>
             </div>
         </div>
+        <table class="table table-striped mb-0">
+                <thead>
+                    <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">RFC</th>
+                    <th scope="col">Razón Social</th>
+                    <th scope="col">Importe</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-all-bills">
+                    <% @bills.sort_by(&:date).reverse.each do |factura| %>
+                            <tr>
+                                <th scope="row"><%= factura.rfc %></th>
+                                <th scope="row"><%= factura.uuid %></th>
+                                <th scope="row"><%= factura.ccyisocode %></th>
+                                <td>$ <%= factura.subtotal %></td>
+                                <td>$ <%= factura.place_generated %></td>
+                                <td>$ <%= factura.date %></td>
+                                <td><%= factura.emisor_name %></td>
+                                <td><%= factura.emisor_rfc %></td>
+                                <td><%= factura.receptor_name %></td>
+                                <td><%= factura.receptor_rfc %></td>
+                                <td><%= factura.vigente %></td>
+                                <td><%= factura.product_id %></td>
+                                <td><%= factura.quantity %></td>
+                                <td><%= factura.cost %></td>
+                            </tr>
+                    <% end %>
+                    
+                </tbody>
+        </table>
     </div>
 </body>
 </html>

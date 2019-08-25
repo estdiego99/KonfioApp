@@ -11,9 +11,6 @@ a{
     color: white !important;
     text-align: center !important;
 }
-.card{
-    box-shadow: 10px 10px 5px 0px rgba(168,168,168,0.51) !important;
-}
 .purple{
     background-color: #8A79F7 ;
     color: white;
@@ -24,6 +21,7 @@ a{
 }
 .card{
     background-color: #E9EBED !important;
+    box-shadow: 10px 10px 5px 0px rgba(168,168,168,0.51) !important;
     border: none !important;
 }
 .card-body{
@@ -65,4 +63,17 @@ overflow: auto;
 }
 .table-wrapper-scroll-y {
 display: block;
+}
+
+#tabla-all-bills {
+    font-size: 12px;
+}
+
+img{
+    width: 15%;
+}
+
+#header-title {
+    font-weight: bold;
+    font-size: 2em;
 }
