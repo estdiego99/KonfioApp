@@ -17,8 +17,7 @@
     <div class="container-fluid pl-0 pr-0">
         <nav class="navbar purple navbar-light ml-0">
             <a class="navbar-brand" href="#">
-                <img class="img-fluid" width="30" height="30" src="https://s3-us-west-2.amazonaws.com/konfio-blog/wp-content/uploads/2018/01/03092922/konfio_Logo-300x232.png" alt="Card image cap">
-
+                <p><%= @bills[0].business_name %></p>
             </a>
         </nav>
         <div class="row mr-0 mt-5 border-bottom justify-content-center">
@@ -63,8 +62,12 @@
                 </div>
             </a>
         </div>
-        <div class="row justify-content-center">
-            <img class="content-fluid" src="http://blog.transparency.org/wp-content/uploads/2013/08/HondurasGraphES-1.gif" alt="">
+
+        
+        <div class="row  mr-0 justify-content-center">
+            <div class="col-md-6">
+                <%= area_chart  Bill.group_by_week(:date).sum(:cost), prefix:"$",colors: ["#8a79f7", "#00DCB8"] %> 
+            </div>
         </div>
     </div>
 </body>
