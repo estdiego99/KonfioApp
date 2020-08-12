@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 gem "font-awesome-rails"
-gem 'chartkick', '~> 3.2', '>= 3.2.1'
+gem 'chartkick', '~> 3.4'
 gem 'groupdate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
